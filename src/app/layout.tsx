@@ -1,7 +1,8 @@
-import Footer from "./component/footer/footer";
-import NavBar from "./component/navbar/navbar";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { Inter, Roboto } from "next/font/google";
+import AuthProvider from "./component/authProvider/authProvider";
+import NavBar from "./component/navbar/navbar";
+import Footer from "./component/footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +19,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={inter.className}>
-                <NavBar />
-                {children}
-                <Footer />
+                <AuthProvider>
+                    <NavBar />
+                    {children}
+                    <Footer />
+                </AuthProvider>
             </body>
         </html>
     );
